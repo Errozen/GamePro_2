@@ -8,6 +8,7 @@ namespace GamePro
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        public int score;
 
         public Game1()
         {
@@ -35,7 +36,8 @@ namespace GamePro
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            // เพิ่มการอัปเดตคะแนน
+            UpdateScore(10); // เพิ่มคะแนน 10 ทุกครั้งที่ Update เรียกใช้
 
             base.Update(gameTime);
         }
@@ -46,7 +48,23 @@ namespace GamePro
 
             // TODO: Add your drawing code here
 
+            // แสดงคะแนน
+            DrawScore();
+
             base.Draw(gameTime);
+        }
+
+        // เมธอดใหม่ที่ใช้ในการเพิ่มคะแนน
+        public void UpdateScore(int points)
+        {
+            score += points;
+        }
+
+        // เมธอดใหม่ที่ใช้ในการแสดงคะแนน
+        private void DrawScore()
+        {
+            // ตัวอย่างการแสดงคะแนน (โค้ดจริงจะต้องใช้ SpriteBatch และข้อความที่โหลดจาก Content)
+            System.Console.WriteLine($"Score: {score}");
         }
     }
 }
